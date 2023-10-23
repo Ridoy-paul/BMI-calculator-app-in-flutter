@@ -10,12 +10,13 @@ class GenderWidget extends StatefulWidget {
 }
 
 class _GenderWidgetState extends State<GenderWidget> {
+  int _gender = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ChoiceChip3D(
             style: const ChoiceChip3DStyle(
@@ -23,15 +24,18 @@ class _GenderWidgetState extends State<GenderWidget> {
               topColor: colorWhite,
               borderRadius: BorderRadius.all(Radius.circular(30))
             ),
-            border: Border.all(color: colorGray),
+            border: Border.all(color: _gender == 1 ? colorGreen : colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
-            width: MediaQuery.sizeOf(context).width * 0.3,
+            width: MediaQuery.sizeOf(context).width * 0.32,
             onSelected: () {
-              print("male selected");
+              setState(() {
+                _gender = 1;
+              });
             },
             onUnSelected: () {
               print("male not selected");
             },
+            selected: _gender == 1,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -49,6 +53,43 @@ class _GenderWidgetState extends State<GenderWidget> {
               ),
             ),
           ),
+          const SizedBox(width: 20,),
+          ChoiceChip3D(
+            style: const ChoiceChip3DStyle(
+                backColor: colorWhite,
+                topColor: colorWhite,
+                borderRadius: BorderRadius.all(Radius.circular(30))
+            ),
+            border: Border.all(color: _gender == 2 ? colorGreen : colorGray),
+            height: MediaQuery.sizeOf(context).width * 0.36,
+            width: MediaQuery.sizeOf(context).width * 0.32,
+            onSelected: () {
+              setState(() {
+                _gender = 2;
+              });
+            },
+            onUnSelected: () {
+              print("male not selected");
+            },
+            selected: _gender == 2,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'asset/images/woman.png',
+                    alignment: Alignment.center,
+                    width: MediaQuery.sizeOf(context).width * 0.21,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  const Text("Female", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,),)
+                ],
+              ),
+            ),
+          ),
+
 
         ],
       ),
