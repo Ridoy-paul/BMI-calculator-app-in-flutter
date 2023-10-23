@@ -11,6 +11,22 @@ class GenderWidget extends StatefulWidget {
 
 class _GenderWidgetState extends State<GenderWidget> {
   int _gender = 0;
+  final ChoiceChip3DStyle selectedStyle = const ChoiceChip3DStyle(
+      backColor: colorGreen,
+      topColor: colorWhite,
+      borderRadius: BorderRadius.all(Radius.circular(30))
+  );
+
+  final ChoiceChip3DStyle unSelectedStyle = const ChoiceChip3DStyle(
+      backColor: colorWhite,
+      topColor: colorWhite,
+      borderRadius: BorderRadius.all(Radius.circular(30))
+  );
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,11 +35,7 @@ class _GenderWidgetState extends State<GenderWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ChoiceChip3D(
-            style: ChoiceChip3DStyle(
-              backColor: _gender == 1 ? colorGreen : colorWhite,
-              topColor: colorWhite,
-              borderRadius: const BorderRadius.all(Radius.circular(30))
-            ),
+            style: _gender == 1 ? selectedStyle : unSelectedStyle,
             border: Border.all(color: _gender == 1 ? colorGreen : colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
             width: MediaQuery.sizeOf(context).width * 0.32,
@@ -55,11 +67,7 @@ class _GenderWidgetState extends State<GenderWidget> {
           ),
           const SizedBox(width: 20,),
           ChoiceChip3D(
-            style: ChoiceChip3DStyle(
-                backColor: _gender == 2 ? colorGreen : colorWhite,
-                topColor: colorWhite,
-                borderRadius: const BorderRadius.all(Radius.circular(30))
-            ),
+            style: _gender == 2 ? selectedStyle : unSelectedStyle,
             border: Border.all(color: _gender == 2 ? colorGreen : colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
             width: MediaQuery.sizeOf(context).width * 0.32,
