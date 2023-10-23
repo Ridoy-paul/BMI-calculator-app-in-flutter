@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("BMI Calculator"),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Text("hello"),
