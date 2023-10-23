@@ -19,10 +19,10 @@ class _GenderWidgetState extends State<GenderWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ChoiceChip3D(
-            style: const ChoiceChip3DStyle(
-              backColor: colorWhite,
+            style: ChoiceChip3DStyle(
+              backColor: _gender == 1 ? colorGreen : colorWhite,
               topColor: colorWhite,
-              borderRadius: BorderRadius.all(Radius.circular(30))
+              borderRadius: const BorderRadius.all(Radius.circular(30))
             ),
             border: Border.all(color: _gender == 1 ? colorGreen : colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
@@ -55,10 +55,10 @@ class _GenderWidgetState extends State<GenderWidget> {
           ),
           const SizedBox(width: 20,),
           ChoiceChip3D(
-            style: const ChoiceChip3DStyle(
-                backColor: colorWhite,
+            style: ChoiceChip3DStyle(
+                backColor: _gender == 2 ? colorGreen : colorWhite,
                 topColor: colorWhite,
-                borderRadius: BorderRadius.all(Radius.circular(30))
+                borderRadius: const BorderRadius.all(Radius.circular(30))
             ),
             border: Border.all(color: _gender == 2 ? colorGreen : colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
