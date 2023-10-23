@@ -1,3 +1,4 @@
+import '../constants/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_choice_chip/flutter_3d_choice_chip.dart';
 
@@ -17,8 +18,12 @@ class _GenderWidgetState extends State<GenderWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           ChoiceChip3D(
-
-            border: Border.all(color: Colors.white),
+            style: const ChoiceChip3DStyle(
+              //backColor: colorWhite,
+              topColor: colorWhite,
+              borderRadius: BorderRadius.all(Radius.circular(30))
+            ),
+            border: Border.all(color: colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
             width: MediaQuery.sizeOf(context).width * 0.3,
 
