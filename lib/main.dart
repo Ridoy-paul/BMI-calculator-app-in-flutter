@@ -26,11 +26,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BMI Calculator"),
+        title: const Text("BMI Calculator"),
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Text("hello"),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            child: Card(
+              elevation: 12,
+              shape: const RoundedRectangleBorder(),
+              child: Column(
+                children: [
+
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
