@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/gender_widget.dart';
 
 void main() => runApp(BMICalculatorApp());
 
@@ -25,22 +26,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("BMI Calculator"),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   title: const Text("BMI Calculator"),
+      //   centerTitle: true,
+      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(12),
-            child: Card(
-              elevation: 12,
-              shape: const RoundedRectangleBorder(),
-              child: Column(
-                children: [
-
-                ],
-              ),
+            child: Column(
+              children: [
+                GenderWidget(),
+              ],
             ),
           ),
         ),
