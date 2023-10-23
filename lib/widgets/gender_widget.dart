@@ -19,17 +19,19 @@ class _GenderWidgetState extends State<GenderWidget> {
         children: [
           ChoiceChip3D(
             style: const ChoiceChip3DStyle(
-              //backColor: colorWhite,
+              backColor: colorWhite,
               topColor: colorWhite,
               borderRadius: BorderRadius.all(Radius.circular(30))
             ),
             border: Border.all(color: colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
             width: MediaQuery.sizeOf(context).width * 0.3,
-
-            //border: Border.all(color: Colors.grey),
-            onSelected: () {},
-            onUnSelected: () {},
+            onSelected: () {
+              print("male selected");
+            },
+            onUnSelected: () {
+              print("male not selected");
+            },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -37,7 +39,7 @@ class _GenderWidgetState extends State<GenderWidget> {
                   Image.asset(
                     'asset/images/profile-man.png',
                     alignment: Alignment.center,
-                    width: MediaQuery.sizeOf(context).width * 0.20,
+                    width: MediaQuery.sizeOf(context).width * 0.21,
                   ),
                   const SizedBox(
                     height: 7,
