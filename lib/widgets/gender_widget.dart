@@ -13,7 +13,7 @@ class GenderWidget extends StatefulWidget {
 class _GenderWidgetState extends State<GenderWidget> {
   int _gender = 0;
   final ChoiceChip3DStyle selectedStyle = const ChoiceChip3DStyle(
-      backColor: colorGreen,
+      backColor: colorDeepOrange,
       topColor: colorWhite,
       borderRadius: BorderRadius.all(Radius.circular(30))
   );
@@ -34,7 +34,7 @@ class _GenderWidgetState extends State<GenderWidget> {
         children: [
           ChoiceChip3D(
             style: _gender == 1 ? selectedStyle : unSelectedStyle,
-            border: Border.all(color: _gender == 1 ? colorGreen : colorGray),
+            border: Border.all(color: _gender == 1 ? colorDeepOrange : colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
             width: MediaQuery.sizeOf(context).width * 0.32,
             onSelected: () {
@@ -65,7 +65,7 @@ class _GenderWidgetState extends State<GenderWidget> {
           const SizedBox(width: 20,),
           ChoiceChip3D(
             style: _gender == 2 ? selectedStyle : unSelectedStyle,
-            border: Border.all(color: _gender == 2 ? colorGreen : colorGray),
+            border: Border.all(color: _gender == 2 ? colorDeepOrange : colorGray),
             height: MediaQuery.sizeOf(context).width * 0.36,
             width: MediaQuery.sizeOf(context).width * 0.32,
             onSelected: () {

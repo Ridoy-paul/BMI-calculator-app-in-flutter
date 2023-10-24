@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:bmi_calculator_app_in_flutter/constants/colors.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 import '/widgets/age_weight_widget.dart';
@@ -12,9 +14,12 @@ class BMICalculatorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.deepOrange,
+      ),
     );
   }
 }
@@ -31,6 +36,8 @@ class _HomePageState extends State<HomePage> {
   int _heightInCm = 0;
   int _age = 0;
   int _weight = 0;
+  bool _isFinished = false;
+  double _bmiScore = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -77,11 +84,20 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.all(5.0),
                     child: SwipeableButtonView(
                       onFinish: () {
-
+                        setState(() {
+                          _isFinished = false;
+                        });
                       },
                       onWaitingProcess: () {
-
+                        calculateBMI();
+                        Future.delayed(const Duration(seconds: 1), () {
+                          setState(() {
+                            _isFinished = true;
+                          });
+                        });
+                        print(_bmiScore);
                       },
+                      isFinished: _isFinished,
                       activeColor: colorDeepOrange,
                       buttonWidget: const Icon(
                         Icons.arrow_forward_ios_rounded,
@@ -98,4 +114,10 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  void calculateBMI() {
+    _bmiScore = _weight / pow(_heightInCm/100, 2);
+  }
+
+
 }
