@@ -55,7 +55,14 @@ class _HomePageState extends State<HomePage> {
                     _heightInCm = height;
                   },
                 ),
-                AgeWeightWidget(),
+                AgeWeightWidget(
+                  onAgeChange: (int age) {
+
+                  },
+                  onWeightChange: (int weight) {
+
+                  },
+                ),
 
               ],
             ),

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class AgeWeightWidget extends StatefulWidget {
-  const AgeWeightWidget({Key? key}) : super(key: key);
+  final Function(int) onAgeChange;
+  final Function(int) onWeightChange;
+
+  const AgeWeightWidget({Key? key, required this.onAgeChange, required this.onWeightChange}) : super(key: key);
 
   @override
   State<AgeWeightWidget> createState() => _AgeWeightWidgetState();
@@ -11,7 +14,7 @@ class AgeWeightWidget extends StatefulWidget {
 
 class _AgeWeightWidgetState extends State<AgeWeightWidget> {
   int _age = 1;
-  int _weight = 0;
+  int _weight = 1;
 
   final RoundedRectangleBorder cardBorderStyle = const RoundedRectangleBorder(
     side: BorderSide(color: colorGray),
@@ -53,6 +56,7 @@ class _AgeWeightWidgetState extends State<AgeWeightWidget> {
                         setState(() {
                           _age = value;
                         });
+                        widget.onAgeChange(_age);
                       },
                     ),
 
@@ -80,6 +84,7 @@ class _AgeWeightWidgetState extends State<AgeWeightWidget> {
                         setState(() {
                           _weight = value;
                         });
+                        widget.onWeightChange(_weight);
                       },
                     ),
 
