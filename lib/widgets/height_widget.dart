@@ -2,14 +2,17 @@ import 'package:bmi_calculator_app_in_flutter/constants/helpers.dart';
 import 'package:flutter/material.dart';
 
 class HeightWidget extends StatefulWidget {
-  const HeightWidget({super.key});
+  final Function(int) onHeightChange;
+  const HeightWidget({super.key, required this.onHeightChange});
 
   @override
   State<HeightWidget> createState() => _HeightWidgetState();
 }
 
 class _HeightWidgetState extends State<HeightWidget> {
-  int _height = 0;
+  int _heightInCM = 0;
+  double _heightInFeet = 0;
+  double _sliderValue = 0;
 
   final RoundedRectangleBorder rectangleBorderStyle = const RoundedRectangleBorder(
       side: BorderSide(
@@ -51,14 +54,13 @@ class _HeightWidgetState extends State<HeightWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            _height.toString(),
-                            style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                            _heightInCM.toString(),
+                            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                           ),
                           const Text(
                             " cm",
                             style: TextStyle(fontSize: 15,),
                           ),
-
                         ],
                       ),
                     ),
@@ -73,14 +75,13 @@ class _HeightWidgetState extends State<HeightWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            _height.toString(),
-                            style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                            _heightInFeet.toStringAsFixed(1),
+                            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                           ),
                           const Text(
                             " feet",
                             style: TextStyle(fontSize: 15,),
                           ),
-
                         ],
                       ),
                     ),
@@ -88,7 +89,18 @@ class _HeightWidgetState extends State<HeightWidget> {
 
                 ],
               ),
-
+              Slider(
+                min: 0,
+                max: 350,
+                value: _sliderValue.toDouble(),
+                onChanged: (value) {
+                  setState(() {
+                    _sliderValue = value;
+                    _heightInCM = value.toInt();
+                    _heightInFeet = _heightInCM / 30.48;
+                  });
+                },
+              )
 
             ],
           ),

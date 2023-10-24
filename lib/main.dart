@@ -45,7 +45,11 @@ class _HomePageState extends State<HomePage> {
                     _gender = gender;
                   },
                 ),
-                HeightWidget(),
+                HeightWidget(
+                  onHeightChange: (int height) {
+
+                  },
+                ),
               ],
             ),
           ),
