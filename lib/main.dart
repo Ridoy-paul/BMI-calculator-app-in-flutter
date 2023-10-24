@@ -1,3 +1,4 @@
+import 'widgets/height_widget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/gender_widget.dart';
 
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                     _gender = gender;
                   },
                 ),
+                HeightWidget(),
               ],
             ),
           ),
