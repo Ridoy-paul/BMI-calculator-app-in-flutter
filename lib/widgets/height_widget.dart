@@ -1,3 +1,4 @@
+import 'package:bmi_calculator_app_in_flutter/constants/helpers.dart';
 import 'package:flutter/material.dart';
 
 class HeightWidget extends StatefulWidget {
@@ -10,12 +11,19 @@ class HeightWidget extends StatefulWidget {
 class _HeightWidgetState extends State<HeightWidget> {
   int _height = 0;
 
+  final RoundedRectangleBorder rectangleBorderStyle = const RoundedRectangleBorder(
+      side: BorderSide(
+        color: colorGray,
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(20))
+  );
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: Card(
-        elevation: 12,
+        elevation: 13,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(20),
@@ -38,9 +46,7 @@ class _HeightWidgetState extends State<HeightWidget> {
                     width: MediaQuery.sizeOf(context).width * 0.4,
                     child: Card(
                       elevation: 7,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20))
-                      ),
+                      shape: rectangleBorderStyle,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -62,9 +68,7 @@ class _HeightWidgetState extends State<HeightWidget> {
                     width: MediaQuery.sizeOf(context).width * 0.4,
                     child: Card(
                       elevation: 7,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20))
-                      ),
+                      shape: rectangleBorderStyle,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
