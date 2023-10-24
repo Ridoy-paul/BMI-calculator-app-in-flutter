@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:bmi_calculator_app_in_flutter/constants/colors.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 import '/widgets/age_weight_widget.dart';
@@ -7,7 +6,7 @@ import 'widgets/height_widget.dart';
 import 'package:flutter/material.dart';
 import 'widgets/gender_widget.dart';
 
-void main() => runApp(BMICalculatorApp());
+void main() => runApp(const BMICalculatorApp());
 
 class BMICalculatorApp extends StatelessWidget {
   const BMICalculatorApp({super.key});
@@ -16,7 +15,7 @@ class BMICalculatorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: const HomePage(),
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
@@ -95,7 +94,6 @@ class _HomePageState extends State<HomePage> {
                             _isFinished = true;
                           });
                         });
-                        print(_bmiScore);
                       },
                       isFinished: _isFinished,
                       activeColor: colorDeepOrange,
@@ -118,6 +116,5 @@ class _HomePageState extends State<HomePage> {
   void calculateBMI() {
     _bmiScore = _weight / pow(_heightInCm/100, 2);
   }
-
 
 }
