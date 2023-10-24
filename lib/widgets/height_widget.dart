@@ -100,6 +100,7 @@ class _HeightWidgetState extends State<HeightWidget> {
                     _heightInCM = value.toInt();
                     _heightInFeet = _heightInCM / 30.48;
                   });
+                  widget.onHeightChange(_heightInCM);
                 },
               )
 
