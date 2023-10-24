@@ -44,13 +44,13 @@ class _AgeWeightWidgetState extends State<AgeWeightWidget> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    const Text("Age(year)", style: TextStyle(fontWeight: FontWeight.bold),),
+                    const Text("Age", style: TextStyle(fontWeight: FontWeight.bold),),
                     NumberPicker(
                       itemHeight: 30,
                       value: _age,
                       minValue: 0,
                       maxValue: 150,
-                      step: 1,
+                      //step: 1,
                       haptics: true,
                       onChanged: (int value) {
                         setState(() {
@@ -59,7 +59,6 @@ class _AgeWeightWidgetState extends State<AgeWeightWidget> {
                         widget.onAgeChange(_age);
                       },
                     ),
-
                   ],
                 ),
               ),
@@ -78,7 +77,7 @@ class _AgeWeightWidgetState extends State<AgeWeightWidget> {
                       value: _weight,
                       minValue: 0,
                       maxValue: 150,
-                      step: 1,
+                      //step: 1,
                       haptics: true,
                       onChanged: (int value) {
                         setState(() {
@@ -92,7 +91,6 @@ class _AgeWeightWidgetState extends State<AgeWeightWidget> {
                 ),
               ),
             ),
-
           ],
         ),
       ),

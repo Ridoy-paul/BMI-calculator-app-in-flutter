@@ -1,3 +1,5 @@
+import 'package:bmi_calculator_app_in_flutter/constants/colors.dart';
+import 'package:swipeable_button_view/swipeable_button_view.dart';
 import '/widgets/age_weight_widget.dart';
 import 'widgets/height_widget.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   int _gender = 0;
   int _heightInCm = 0;
   int _age = 0;
@@ -57,13 +58,39 @@ class _HomePageState extends State<HomePage> {
                 ),
                 AgeWeightWidget(
                   onAgeChange: (int age) {
-
+                    _age = age;
                   },
                   onWeightChange: (int weight) {
-
+                    _weight = weight;
                   },
                 ),
+                Card(
+                  elevation: 4,
+                  margin: const EdgeInsets.only(top: 10, left: 30, right: 30),
+                  shape: const RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: colorGray,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(30))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: SwipeableButtonView(
+                      onFinish: () {
 
+                      },
+                      onWaitingProcess: () {
+
+                      },
+                      activeColor: colorDeepOrange,
+                      buttonWidget: const Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: colorBlack,
+                      ),
+                      buttonText: "C A L C U L A T E",
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -72,4 +99,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
