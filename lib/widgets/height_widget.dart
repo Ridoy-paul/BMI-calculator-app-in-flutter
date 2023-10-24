@@ -1,4 +1,4 @@
-import 'package:bmi_calculator_app_in_flutter/constants/helpers.dart';
+import 'package:bmi_calculator_app_in_flutter/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class HeightWidget extends StatefulWidget {
@@ -92,6 +92,7 @@ class _HeightWidgetState extends State<HeightWidget> {
               Slider(
                 min: 0,
                 max: 350,
+                thumbColor: colorDeepOrange,
                 value: _sliderValue.toDouble(),
                 onChanged: (value) {
                   setState(() {
