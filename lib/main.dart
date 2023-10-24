@@ -8,7 +8,7 @@ class BMICalculatorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
@@ -23,6 +23,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int _gender = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +39,11 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(12),
             child: Column(
               children: [
-                GenderWidget(),
+                GenderWidget(
+                  onGenderChange: (int gender) {
+                    _gender = gender;
+                  },
+                ),
               ],
             ),
           ),

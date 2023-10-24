@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_3d_choice_chip/flutter_3d_choice_chip.dart';
 
 class GenderWidget extends StatefulWidget {
-  const GenderWidget({super.key});
+  final Function(int) onGenderChange;
+  const GenderWidget({super.key, required this.onGenderChange});
 
   @override
   State<GenderWidget> createState() => _GenderWidgetState();
@@ -24,9 +25,6 @@ class _GenderWidgetState extends State<GenderWidget> {
   );
 
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,10 +41,9 @@ class _GenderWidgetState extends State<GenderWidget> {
               setState(() {
                 _gender = 1;
               });
+              widget.onGenderChange(_gender);
             },
-            onUnSelected: () {
-              print("male not selected");
-            },
+            onUnSelected: () {},
             selected: _gender == 1,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -75,10 +72,9 @@ class _GenderWidgetState extends State<GenderWidget> {
               setState(() {
                 _gender = 2;
               });
+              widget.onGenderChange(_gender);
             },
-            onUnSelected: () {
-              print("male not selected");
-            },
+            onUnSelected: () {},
             selected: _gender == 2,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -97,7 +93,6 @@ class _GenderWidgetState extends State<GenderWidget> {
               ),
             ),
           ),
-
 
         ],
       ),
