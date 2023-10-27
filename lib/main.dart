@@ -42,11 +42,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: colorWhite,
-      //   title: const Text("BMI Calculator"),
-      //   centerTitle: true,
-      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -84,17 +79,23 @@ class _HomePageState extends State<HomePage> {
                     child: SwipeableButtonView(
                       onFinish: () {
                         setState(() {
-                          showModalBottomSheet(
-                            isScrollControlled: true,
-                            context: context,
-                            builder: (context) {
-                              return ScoreWidget(
-                                bmiScore: _bmiScore,
-                                age: _age,
-                              );
-                            },
-                          );
-                          _isFinished = false;
+                          if(_gender == 0) {
+                            _isFinished = false;
+                            print("Please Select Gender");
+                          }
+                          else {
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              context: context,
+                              builder: (context) {
+                                return ScoreWidget(
+                                  bmiScore: _bmiScore,
+                                  age: _age,
+                                );
+                              },
+                            );
+                            _isFinished = false;
+                          }
                         });
                       },
                       onWaitingProcess: () {
