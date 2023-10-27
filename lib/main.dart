@@ -79,11 +79,14 @@ class _HomePageState extends State<HomePage> {
                     child: SwipeableButtonView(
                       onFinish: () {
                         setState(() {
-                          if(_gender == 0 || _heightInCm == 0) {
+                          if (_gender == 0 || _heightInCm == 0) {
                             _isFinished = false;
-                            print("Please Select Gender");
-                          }
-                          else {
+                            showSnackBar(
+                                context,
+                                _gender == 0
+                                    ? "Please Select Gender"
+                                    : "Please Set Height");
+                          } else {
                             showModalBottomSheet(
                               isScrollControlled: true,
                               context: context,
@@ -126,5 +129,36 @@ class _HomePageState extends State<HomePage> {
 
   void calculateBMI() {
     _bmiScore = _weight / pow(_heightInCm / 100, 2);
+  }
+
+  static void showSnackBar(BuildContext context, String mesage) {
+    final snackBar = SnackBar(
+      showCloseIcon: true,
+      backgroundColor: colorBlack,
+      closeIconColor: colorWhite,
+      duration: const Duration(seconds: 2),
+      content: Text(mesage, textAlign: TextAlign.center, style: TextStyle(color: colorWhite),),
+      dismissDirection: DismissDirection.up,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height - 50,
+        left: 10,
+        right: 10,
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+    // final snackBar = SnackBar(
+    //   content: Text(mesage),
+    //   duration: const Duration(seconds: 2),
+    //   action: SnackBarAction(
+    //     label: 'Dismiss',
+    //     onPressed: () {},
+    //   ),
+    // );
+    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
