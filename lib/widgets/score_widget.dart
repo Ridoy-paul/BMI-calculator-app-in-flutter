@@ -44,4 +44,30 @@ class _ScoreWidgetState extends State<ScoreWidget> {
       ),
     );
   }
+
+  void setBmiInterpretation() {
+    if(widget.bmiScore > 30) {
+      widget.bmiStatus = 'Obese';
+      widget.bmiInterpretation = "Please Work To Reduce Obesity";
+      widget.bmiStatusColor = colorPink;
+    }
+    else if(widget.bmiScore >= 25) {
+      widget.bmiStatus = 'OverWeight';
+      widget.bmiInterpretation = "Do Regular Exercise & reduce the weight";
+      widget.bmiStatusColor = colorDeepOrange;
+    }
+    else if(widget.bmiScore >= 18.5) {
+      widget.bmiStatus = 'Normal';
+      widget.bmiInterpretation = "Enjoy, You are fit!";
+      widget.bmiStatusColor = colorGreen;
+    }
+    else if(widget.bmiScore < 18.5) {
+      widget.bmiStatus = 'UnderWeight';
+      widget.bmiInterpretation = "Do Regular Exercise & reduce the weight";
+      widget.bmiStatusColor = colorDeepOrange;
+    }
+
+
+  }
+
 }
