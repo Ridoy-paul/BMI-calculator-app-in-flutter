@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                     child: SwipeableButtonView(
                       onFinish: () {
                         setState(() {
-                          if(_gender == 0) {
+                          if(_gender == 0 || _heightInCm == 0) {
                             _isFinished = false;
                             print("Please Select Gender");
                           }
