@@ -8,6 +8,7 @@ class ScoreWidget extends StatefulWidget {
   String? bmiStatus;
   String? bmiInterpretation;
   Color? bmiStatusColor;
+
   ScoreWidget({super.key, required this.bmiScore, required this.age});
 
   @override
@@ -17,6 +18,7 @@ class ScoreWidget extends StatefulWidget {
 class _ScoreWidgetState extends State<ScoreWidget> {
   @override
   Widget build(BuildContext context) {
+    setBmiInterpretation();
     return Container(
       width: double.infinity,
       color: Colors.white,
@@ -24,8 +26,14 @@ class _ScoreWidgetState extends State<ScoreWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Your Score", style: TextStyle(fontSize: 30, color: colorBlack, fontWeight: FontWeight.w500),),
-          const SizedBox(height: 10,),
+          const Text(
+            "Your Score",
+            style: TextStyle(
+                fontSize: 30, color: colorBlack, fontWeight: FontWeight.w500),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
           PrettyGauge(
             gaugeSize: 300,
             minValue: 0,
@@ -36,38 +44,52 @@ class _ScoreWidgetState extends State<ScoreWidget> {
               GaugeSegment('OverWeight', 5, colorDeepOrange),
               GaugeSegment('Obese', 10.1, colorPink),
             ],
-            valueWidget: Text(widget.bmiScore.toStringAsFixed(1), style: const TextStyle(fontSize: 40),),
+            valueWidget: Text(
+              widget.bmiScore.toStringAsFixed(1),
+              style: const TextStyle(fontSize: 40),
+            ),
             currentValue: widget.bmiScore.toDouble(),
             needleColor: Colors.blue,
-          )
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            widget.bmiStatus!,
+            style: const TextStyle(
+              fontSize: 25,
+              color: colorBlack,
+            ),
+          ),
+          Text(
+            widget.bmiInterpretation!,
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+
         ],
       ),
     );
   }
 
   void setBmiInterpretation() {
-    if(widget.bmiScore > 30) {
+    if (widget.bmiScore > 30) {
       widget.bmiStatus = 'Obese';
-      widget.bmiInterpretation = "Please Work To Reduce Obesity";
-      widget.bmiStatusColor = colorPink;
-    }
-    else if(widget.bmiScore >= 25) {
+      widget.bmiInterpretation = "Please work to reduce obesity";
+      widget.bmiStatusColor = Colors.pink;
+    } else if (widget.bmiScore >= 25) {
       widget.bmiStatus = 'OverWeight';
       widget.bmiInterpretation = "Do Regular Exercise & reduce the weight";
-      widget.bmiStatusColor = colorDeepOrange;
-    }
-    else if(widget.bmiScore >= 18.5) {
+      widget.bmiStatusColor = Colors.deepOrange;
+    } else if (widget.bmiScore >= 18.5) {
       widget.bmiStatus = 'Normal';
       widget.bmiInterpretation = "Enjoy, You are fit!";
-      widget.bmiStatusColor = colorGreen;
-    }
-    else if(widget.bmiScore < 18.5) {
+      widget.bmiStatusColor = Colors.green;
+    } else if (widget.bmiScore < 18.5) {
       widget.bmiStatus = 'UnderWeight';
-      widget.bmiInterpretation = "Do Regular Exercise & reduce the weight";
-      widget.bmiStatusColor = colorDeepOrange;
+      widget.bmiInterpretation = "Try to increase the weight!";
+      widget.bmiStatusColor = Colors.red;
     }
-
-
   }
-
 }
