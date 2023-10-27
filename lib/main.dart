@@ -85,14 +85,16 @@ class _HomePageState extends State<HomePage> {
                       onFinish: () {
                         setState(() {
                           showModalBottomSheet(
-                              isScrollControlled: true,
-                              context: context,
-                              builder: (context) {
-                                return ScoreWidget(
-                                  bmiScore: _bmiScore,
-                                  age: _age,
-                                );
-                              });
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (context) {
+                              return ScoreWidget(
+                                bmiScore: _bmiScore,
+                                age: _age,
+                              );
+                            },
+                          );
+                          _isFinished = false;
                         });
                       },
                       onWaitingProcess: () {

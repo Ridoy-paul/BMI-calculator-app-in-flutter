@@ -9,7 +9,7 @@ class ScoreWidget extends StatefulWidget {
   String? bmiInterpretation;
   Color? bmiStatusColor;
 
-  ScoreWidget({super.key, required this.bmiScore, required this.age});
+  ScoreWidget({super.key, required this.bmiScore, required this.age,});
 
   @override
   State<ScoreWidget> createState() => _ScoreWidgetState();
@@ -29,7 +29,10 @@ class _ScoreWidgetState extends State<ScoreWidget> {
           const Text(
             "Your Score",
             style: TextStyle(
-                fontSize: 30, color: colorBlack, fontWeight: FontWeight.w500),
+              fontSize: 30,
+              color: colorBlack,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           const SizedBox(
             height: 10,
@@ -58,16 +61,23 @@ class _ScoreWidgetState extends State<ScoreWidget> {
             widget.bmiStatus!,
             style: const TextStyle(
               fontSize: 25,
-              color: colorBlack,
             ),
           ),
           Text(
             widget.bmiInterpretation!,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 15,
             ),
           ),
-
+          const SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Close"),
+          )
         ],
       ),
     );
